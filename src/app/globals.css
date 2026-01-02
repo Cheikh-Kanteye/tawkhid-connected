@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Couleurs principales - Vert Islamique */
+    --primary-green: 120 67% 23%;
+    --primary-green-light: 122 46% 33%;
+    --primary-green-dark: 124 66% 12%;
+
+    /* Couleurs secondaires - Or */
+    --secondary-gold: 43 67% 52%;
+    --secondary-gold-light: 46 88% 60%;
+    --secondary-gold-dark: 38 91% 38%;
+
+    /* Couleurs neutres */
+    --neutral-cream: 45 71% 95%;
+    --neutral-gray: 220 9% 46%;
+    --neutral-dark: 220 26% 14%;
+
+    /* Variables shadcn */
+    --background: 45 71% 97%;
+    --foreground: 220 26% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 26% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 26% 14%;
+    --primary: 120 67% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 43 67% 52%;
+    --secondary-foreground: 220 26% 14%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 43 67% 52%;
+    --accent-foreground: 220 26% 14%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 120 67% 23%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 220 26% 10%;
+    --foreground: 45 71% 95%;
+    --card: 220 26% 14%;
+    --card-foreground: 45 71% 95%;
+    --popover: 220 26% 14%;
+    --popover-foreground: 45 71% 95%;
+    --primary: 120 67% 33%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 43 67% 52%;
+    --secondary-foreground: 220 26% 14%;
+    --muted: 220 26% 20%;
+    --muted-foreground: 220 9% 60%;
+    --accent: 43 67% 52%;
+    --accent-foreground: 220 26% 14%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 26% 25%;
+    --input: 220 26% 25%;
+    --ring: 120 67% 33%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Bouton principal islamique */
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg shadow-md
+           border-b-4 border-primary-dark
+           hover:bg-primary-light
+           transition-all duration-200
+           font-medium;
+  }
+
+  /* Bouton secondaire (accent or) */
+  .btn-secondary {
+    @apply bg-secondary text-neutral-dark px-6 py-3 rounded-lg
+           font-semibold shadow-md
+           hover:bg-secondary-light
+           transition-all duration-200;
+  }
+
+  /* Bouton outline */
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg
+           hover:bg-primary hover:text-white
+           transition-all duration-200
+           font-medium;
+  }
+
+  /* Carte avec bordure dorée */
+  .card-gold {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden
+           border-t-4 border-secondary
+           hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* Carte standard */
+  .card-default {
+    @apply bg-white rounded-xl shadow-md overflow-hidden
+           hover:shadow-lg transition-shadow duration-300;
+  }
+
+  /* Header avec gradient islamique */
+  .header-islamic {
+    @apply bg-gradient-to-r from-primary to-primary-light
+           text-white relative overflow-hidden;
+  }
+
+  /* Pattern overlay */
+  .pattern-overlay {
+    @apply absolute inset-0 opacity-5 pointer-events-none;
+    background-image: url('/patterns/islamic-pattern.svg');
+    background-repeat: repeat;
+    background-size: 100px 100px;
+  }
+
+  /* Section avec fond crème */
+  .section-cream {
+    @apply bg-neutral-cream py-16 px-4;
+  }
+
+  /* Badge islamique */
+  .badge-islamic {
+    @apply inline-flex items-center px-3 py-1 rounded-full
+           bg-primary/10 text-primary text-sm font-medium;
+  }
+
+  /* Input islamique */
+  .input-islamic {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300
+           focus:border-primary focus:ring-2 focus:ring-primary/20
+           outline-none transition-all duration-200;
+  }
+
+  /* Ornement arabesque */
+  .ornament-top {
+    @apply relative;
+  }
+
+  .ornament-top::before {
+    content: '';
+    @apply absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1;
+    background: linear-gradient(90deg, transparent, hsl(var(--secondary-gold)), transparent);
+  }
+}
+
+@layer utilities {
+  /* Animations personnalisées */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Gradient text islamique */
+  .text-gradient-islamic {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  /* Gradient text or */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-secondary-dark via-secondary to-secondary-light bg-clip-text text-transparent;
+  }
+
+  /* Scrollbar personnalisée */
+  .scrollbar-islamic::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-islamic::-webkit-scrollbar-track {
+    @apply bg-neutral-cream rounded-full;
+  }
+
+  .scrollbar-islamic::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50;
+  }
+
+  /* Focus ring islamique */
+  .focus-ring-islamic {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+  }
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'Amiri';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/amiri/v27/J7aRnpd8CGxBHqUpvrIw74NL.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Amiri';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/amiri/v27/J7acnpd8CGxBHp2VkZY4xJ9CGyAa.woff2') format('woff2');
+}
